@@ -217,6 +217,10 @@ class _ProductPageState extends State<ProductPage> {
                                             SizedBox(
                                                 height: 70,
                                                 child: FadeInImage.assetNetwork(
+                                                  imageErrorBuilder: (context,
+                                                          error, stackTrace) =>
+                                                      Icon(FontAwesomeIcons
+                                                          .triangleExclamation),
                                                   placeholder:
                                                       'assets/images/tunzaalogo.png',
                                                   image: prodItem.image,
