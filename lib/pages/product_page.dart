@@ -162,7 +162,23 @@ class _ProductPageState extends State<ProductPage> {
                       future: fetchProds,
                       builder: (context, AsyncSnapshot snapshot) {
                         if (snapshot.hasError) {
-                          return Text('error');
+                          return Center(
+                              child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                FontAwesomeIcons.triangleExclamation,
+                                size: 70,
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Text('Error has occured',
+                                  style: GoogleFonts.montserrat(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18))
+                            ],
+                          ));
                         } else if (!snapshot.hasData ||
                             snapshot.connectionState ==
                                 ConnectionState.waiting) {
@@ -200,9 +216,10 @@ class _ProductPageState extends State<ProductPage> {
                                           children: [
                                             SizedBox(
                                                 height: 70,
-                                                child: Image.network(
-                                                  prodItem.image,
-                                                  fit: BoxFit.cover,
+                                                child: FadeInImage.assetNetwork(
+                                                  placeholder:
+                                                      'assets/images/tunzaalogo.png',
+                                                  image: prodItem.image,
                                                 )),
                                             const SizedBox(
                                               height: 10,
